@@ -17,6 +17,7 @@ steps:
           - "--farm=bs"
           - "--device=IOS_10"
           - "--appium-version=1.7.0"
+          - "--fail-fast"
     concurrency: 9
     concurrency_group: browserstack-app
     retry:
@@ -38,6 +39,7 @@ steps:
           - "--farm=bs"
           - "--device=IOS_10"
           - "--appium-version=1.8.0"
+          - "--fail-fast"
     concurrency: 9
     concurrency_group: browserstack-app
     retry:
@@ -59,6 +61,7 @@ steps:
           - "--farm=bs"
           - "--device=IOS_10"
           - "--appium-version=1.12.1"
+          - "--fail-fast"
     concurrency: 9
     concurrency_group: browserstack-app
     retry:
@@ -80,6 +83,7 @@ steps:
           - "--farm=bs"
           - "--device=IOS_10"
           - "--appium-version=1.13.0"
+          - "--fail-fast"
     concurrency: 9
     concurrency_group: browserstack-app
     retry:
@@ -101,6 +105,7 @@ steps:
           - "--farm=bs"
           - "--device=IOS_10"
           - "--appium-version=1.14.0"
+          - "--fail-fast"
     concurrency: 9
     concurrency_group: browserstack-app
     retry:
