@@ -10,6 +10,7 @@ When('I relaunch the app') do
     Maze.driver.get(app)
   else
     Maze.driver.launch_app
+    step 'the app is running in the foreground'
   end
 end
 
