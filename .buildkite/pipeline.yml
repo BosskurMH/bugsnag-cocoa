@@ -37,6 +37,7 @@ steps:
         run: cocoa-maze-runner
         command:
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--exclude=app_hangs.feature"
           - "--farm=sl"
           - "--device=iPad_Pro_12_9_2018_real"
           - "--os=ios"
@@ -64,6 +65,7 @@ steps:
         run: cocoa-maze-runner
         command:
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--exclude=app_hangs.feature"
           - "--farm=sl"
           - "--device=iPhone_6_Plus_12_real_us"
           - "--os=ios"
