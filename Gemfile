@@ -10,7 +10,7 @@ gem 'xcpretty'
 #gem 'bugsnag-maze-runner', git: 'https://github.com/bugsnag/maze-runner', tag: 'v6.6.2'
 
 # Use a specific branch
-gem 'bugsnag-maze-runner', git: 'https://github.com/bugsnag/maze-runner', branch: 'master'
+#gem 'bugsnag-maze-runner', git: 'https://github.com/bugsnag/maze-runner', branch: 'master'
 
 # Locally, you can run against Maze Runner branches and uncommitted changes:
-#gem 'bugsnag-maze-runner', path: '../maze-runner'
+gem 'bugsnag-maze-runner', path: '../maze-runner'

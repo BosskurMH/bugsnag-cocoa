@@ -21,7 +21,9 @@ When("I relaunch the app after a crash") do
   when 'macos'
     Maze.driver.get(Maze.driver.capabilities['app'])
   else
+    $logger.info 'Call Maze.driver.launch_app'
     Maze.driver.launch_app
+    $logger.info 'Finished Maze.driver.launch_app'
   end
 end
 

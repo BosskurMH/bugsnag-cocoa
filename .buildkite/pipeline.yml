@@ -26,7 +26,7 @@ steps:
   - label: 'iOS 13 E2E tests'
     depends_on:
       - cocoa_fixture
-    timeout_in_minutes: 120
+    timeout_in_minutes: 180
     agents:
       queue: opensource
     plugins:
@@ -54,7 +54,7 @@ steps:
   - label: 'iOS 12 E2E tests'
     depends_on:
       - cocoa_fixture
-    timeout_in_minutes: 120
+    timeout_in_minutes: 180
     agents:
       queue: opensource
     plugins:
@@ -83,7 +83,7 @@ steps:
     skip: WIP
     depends_on:
       - cocoa_fixture
-    timeout_in_minutes: 120
+    timeout_in_minutes: 180
     agents:
       queue: opensource
     plugins:

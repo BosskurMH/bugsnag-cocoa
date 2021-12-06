@@ -21,6 +21,7 @@ When("I run {string} and relaunch the crashed app") do |event_type|
 
     $logger.warn 'Ignoring error - this is normal for AppiumForMac if a button click causes the app to crash.'
   end
+  $logger.info 'About to relaunch'
   step('I relaunch the app after a crash')
 end
 
