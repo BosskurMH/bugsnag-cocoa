@@ -23,34 +23,6 @@ steps:
   # E2E tests
   #
 
-  - label: 'iOS 13 E2E tests'
-    depends_on:
-      - cocoa_fixture
-    timeout_in_minutes: 180
-    agents:
-      queue: opensource
-    plugins:
-      artifacts#v1.3.0:
-        download: "features/fixtures/ios/output/iOSTestApp.ipa"
-        upload: "maze_output/failed/**/*"
-      docker-compose#v3.3.0:
-        run: cocoa-maze-runner
-        command:
-          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
-          - "--exclude=app_hangs.feature"
-          - "--farm=sl"
-          - "--device=iPad_Pro_12_9_2018_real"
-          - "--os=ios"
-          - "--os-version=13"
-          - "--appium-version=1.21.0"
-    concurrency: 2
-    concurrency_group: sauce-labs
-    concurrency_method: eager
-    retry:
-      automatic:
-        - exit_status: -1  # Agent was lost
-          limit: 2
-
   - label: 'iOS 12 E2E tests'
     depends_on:
       - cocoa_fixture
@@ -65,11 +37,65 @@ steps:
         run: cocoa-maze-runner
         command:
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
-          - "--exclude=app_hangs.feature"
           - "--farm=sl"
           - "--device=iPhone_6_Plus_12_real_us"
           - "--os=ios"
           - "--os-version=12"
+          - "--appium-version=1.21.0"
+    concurrency: 2
+    concurrency_group: sauce-labs
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 13 E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 180
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=sl"
+          - "--device=iPad_Pro_12_9_2018_real"
+          - "--os=ios"
+          - "--os-version=13"
+          - "--appium-version=1.21.0"
+    concurrency: 2
+    concurrency_group: sauce-labs
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 14 E2E tests'
+    skip: iOS 14 done for now
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 180
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=sl"
+          - "--device=iPhone_11_14_real_us"
+          - "--os=ios"
+          - "--os-version=14"
           - "--appium-version=1.21.0"
     concurrency: 2
     concurrency_group: sauce-labs
