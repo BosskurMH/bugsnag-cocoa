@@ -5,11 +5,14 @@ def short_scenario_name(scenario)
   scenario.delete_suffix 'Scenario'
 end
 
+def log_step(step)
+  $logger.info "Start: #{step}"
+  step(step)
+end
+
 When('I run {string}') do |event_type|
-  steps %(
-    When I send the keys "#{short_scenario_name event_type}" to the element "scenario_name"
-    And I click the element "run_scenario"
-  )
+  log_step "When I send the keys \"#{short_scenario_name event_type}\" to the element \"scenario_name\""
+  log_step 'I click the element "run_scenario"'
 end
 
 When("I run {string} and relaunch the crashed app") do |event_type|
@@ -41,9 +44,11 @@ When("I run the configured scenario and relaunch the crashed app") do
 end
 
 When('I clear all persistent data') do
+  $logger.info 'Start: I clear all persistent data'
   steps %(
     When I click the element "clear_persistent_data"
   )
+  $logger.info 'End: I clear all persistent data'
 end
 
 def click_if_present(element)
