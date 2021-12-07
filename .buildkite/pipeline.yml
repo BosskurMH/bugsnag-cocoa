@@ -41,7 +41,7 @@ steps:
           - "--device=iPad_mini_3_real_us"
           - "--os=ios"
           - "--os-version=12"
-          - "--appium-version=1.21.0"
+          - "--appium-version=1.17.0"
           - "--fail-fast"
     concurrency: 2
     concurrency_group: sauce-labs
@@ -66,10 +66,10 @@ steps:
         command:
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
           - "--farm=sl"
-          - "--device=iPad_Pro_12_9_2018_real" iPad_Pro_12_9_2018_real
+          - "--device=iPad_Pro_12_9_2018_real"
           - "--os=ios"
           - "--os-version=13"
-          - "--appium-version=1.21.0"
+          - "--appium-version=1.17.0"
           - "--fail-fast"
     concurrency: 2
     concurrency_group: sauce-labs
