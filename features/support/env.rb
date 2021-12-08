@@ -4,9 +4,6 @@ BeforeAll do
   $api_key = "12312312312312312312312312312312"
   Maze.config.receive_no_requests_wait = 15
 
-  # Sauce labs eval - show me all failures
-  Maze.config.enable_retries = false
-
   # Setup a 3 minute timeout for receiving requests is STRESS_TEST env var is set
   Maze.config.receive_requests_wait = 180 unless ENV['STRESS_TEST'].nil?
 
