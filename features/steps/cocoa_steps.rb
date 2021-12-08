@@ -11,7 +11,7 @@ def log_step(step)
 end
 
 When('I run {string}') do |event_type|
-  log_step "When I send the keys \"#{short_scenario_name event_type}\" to the element \"scenario_name\""
+  log_step "I send the keys \"#{short_scenario_name event_type}\" to the element \"scenario_name\""
   log_step 'I click the element "run_scenario"'
 end
 

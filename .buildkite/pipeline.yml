@@ -46,6 +46,8 @@ steps:
     concurrency: 2
     concurrency_group: sauce-labs
     concurrency_method: eager
+    soft_fail:
+      - exit_status: "*"
     retry:
       automatic:
         - exit_status: -1  # Agent was lost
@@ -74,6 +76,8 @@ steps:
     concurrency: 2
     concurrency_group: sauce-labs
     concurrency_method: eager
+    soft_fail:
+      - exit_status: "*"
     retry:
       automatic:
         - exit_status: -1  # Agent was lost
@@ -103,6 +107,8 @@ steps:
     concurrency: 2
     concurrency_group: sauce-labs
     concurrency_method: eager
+    soft_fail:
+      - exit_status: "*"
     retry:
       automatic:
         - exit_status: -1  # Agent was lost
