@@ -136,3 +136,175 @@ steps:
       automatic:
         - exit_status: -1  # Agent was lost
           limit: 2
+
+
+  #############################################################
+  # BrowserStack comparison
+  #############################################################
+
+  - label: 'iOS 15 barebones E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 10
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "features/barebone_tests.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=bs"
+          - "--device=IOS_15"
+          - "--appium-version=1.21.0"
+          - "--order=random"
+    concurrency: 9
+    concurrency_group: browserstack-app
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 14 barebones E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 10
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "features/barebone_tests.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=bs"
+          - "--device=IOS_14"
+          - "--appium-version=1.21.0"
+          - "--order=random"
+    concurrency: 9
+    concurrency_group: browserstack-app
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 13 barebones E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 10
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "features/barebone_tests.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=bs"
+          - "--device=IOS_13"
+          - "--appium-version=1.17.0"
+          - "--order=random"
+    concurrency: 9
+    concurrency_group: browserstack-app
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 12 barebones E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 10
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "features/barebone_tests.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=bs"
+          - "--device=IOS_12"
+          - "--appium-version=1.17.0"
+          - "--order=random"
+    concurrency: 9
+    concurrency_group: browserstack-app
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 11 barebones E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 10
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "features/barebone_tests.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=bs"
+          - "--device=IOS_11"
+          - "--appium-version=1.8.0"
+          - "--capabilities={\"browserstack.networkLogs\":\"true\"}"
+          - "--order=random"
+    concurrency: 9
+    concurrency_group: browserstack-app
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+  - label: 'iOS 10 barebones E2E tests'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 10
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "features/barebone_tests.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=bs"
+          - "--device=IOS_10"
+          - "--appium-version=1.8.0"
+          - "--capabilities={\"browserstack.networkLogs\":\"true\"}"
+          - "--order=random"
+    concurrency: 9
+    concurrency_group: browserstack-app
+    concurrency_method: eager
+    retry:
+      automatic:
+        - exit_status: -1  # Agent was lost
+          limit: 2
+
+
+
