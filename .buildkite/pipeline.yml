@@ -36,6 +36,7 @@ steps:
       docker-compose#v3.3.0:
         run: cocoa-maze-runner
         command:
+          - "--exclude=features/app_hangs.feature"
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
           - "--farm=sl"
           - "--device=iPad_mini_3_real_us"
@@ -66,6 +67,7 @@ steps:
       docker-compose#v3.3.0:
         run: cocoa-maze-runner
         command:
+          - "--exclude=features/app_hangs.feature"
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
           - "--farm=sl"
           - "--device=iPad_Pro_12_9_2018_real"
@@ -97,6 +99,7 @@ steps:
       docker-compose#v3.3.0:
         run: cocoa-maze-runner
         command:
+          - "--exclude=features/app_hangs.feature"
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
           - "--farm=sl"
           - "--device=iPhone_11_14_real_us"
@@ -128,6 +131,7 @@ steps:
       docker-compose#v3.3.0:
         run: cocoa-maze-runner
         command:
+          - "--exclude=features/app_hangs.feature"
           - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
           - "--farm=sl"
           - "--device=iPhone_6_10_3_real"
