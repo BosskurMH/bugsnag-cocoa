@@ -3,10 +3,6 @@ Feature: App hangs
   Background:
     Given I clear all persistent data
 
-  Scenario: Non-fatal app hangs should not be reported by default
-    When I run "AppHangDefaultConfigScenario"
-    Then I should receive no errors
-
   Scenario: App hangs above the threshold should be reported
     When I set the app to "2.1" mode
     And I run "AppHangScenario"
@@ -90,15 +86,6 @@ Feature: App hangs
     And the "method" of stack frame 0 matches "__semwait_signal"
     And the stacktrace is valid for the event
 
-  Scenario: App hangs below the threshold should not be reported
-    When I set the app to "1.8" mode
-    And I run "AppHangScenario"
-    And I should receive no errors
-
-  Scenario: App hangs should not be reported if enabledErrorTypes.appHangs = false
-    When I run "AppHangDisabledScenario"
-    Then I should receive no errors
-
   Scenario: Fatal app hangs should be reported if appHangThresholdMillis = BugsnagAppHangThresholdFatalOnly
     When I run "AppHangFatalOnlyScenario"
     And I wait for 3 seconds
@@ -124,13 +111,6 @@ Feature: App hangs
     And the event "session.events.handled" equals 0
     And the event "session.events.unhandled" equals 1
 
-  Scenario: Fatal app hangs should not be reported if enabledErrorTypes.appHangs = false
-    When I run "AppHangFatalDisabledScenario"
-    And I wait for 3 seconds
-    And I relaunch the app
-    And I configure Bugsnag for "AppHangFatalDisabledScenario"
-    Then I should receive no errors
-
   @skip_macos
   Scenario: Fatal app hangs should be reported if the app hangs before going to the background
     When I run "AppHangFatalOnlyScenario"
@@ -139,14 +119,6 @@ Feature: App hangs
     And I configure Bugsnag for "AppHangFatalOnlyScenario"
     And I wait to receive an error
     And the exception "message" equals "The app was terminated while unresponsive"
-
-  @skip_macos
-  Scenario: Fatal app hangs should not be reported if they occur once the app is in the background
-    When I run "AppHangDidEnterBackgroundScenario"
-    And I background the app for 3 seconds
-    And I relaunch the app
-    And I configure Bugsnag for "AppHangDidEnterBackgroundScenario"
-    Then I should receive no errors
 
   @skip_macos
   Scenario: App hangs should be reported if the app hangs after resuming from the background
@@ -165,3 +137,31 @@ Feature: App hangs
     And the exception "errorClass" equals "App Hang"
     And the exception "message" equals "The app's main thread failed to respond to an event within 2000 milliseconds"
     And the exception "type" equals "cocoa"
+
+  Scenario: Non-fatal app hangs should not be reported by default
+    When I run "AppHangDefaultConfigScenario"
+    Then I should receive no errors
+
+  Scenario: Fatal app hangs should not be reported if enabledErrorTypes.appHangs = false
+    When I run "AppHangFatalDisabledScenario"
+    And I wait for 3 seconds
+    And I relaunch the app
+    And I configure Bugsnag for "AppHangFatalDisabledScenario"
+    Then I should receive no errors
+
+  @skip_macos
+  Scenario: Fatal app hangs should not be reported if they occur once the app is in the background
+    When I run "AppHangDidEnterBackgroundScenario"
+    And I background the app for 3 seconds
+    And I relaunch the app
+    And I configure Bugsnag for "AppHangDidEnterBackgroundScenario"
+    Then I should receive no errors
+
+  Scenario: App hangs below the threshold should not be reported
+    When I set the app to "1.8" mode
+    And I run "AppHangScenario"
+    And I should receive no errors
+
+  Scenario: App hangs should not be reported if enabledErrorTypes.appHangs = false
+    When I run "AppHangDisabledScenario"
+    Then I should receive no errors
