@@ -63,11 +63,7 @@ end
 
 When('I configure Bugsnag for {string}') do |event_type|
   steps %(
-<<<<<<< HEAD
     When I send the keys "#{short_scenario_name event_type}" to the element "scenario_name"
-=======
-    When I send the keys "#{event_type}" to the element "scenario_name"
->>>>>>> f2766d96 (No need to wait for elements to be present)
     And I click the element "start_bugsnag"
   )
 end

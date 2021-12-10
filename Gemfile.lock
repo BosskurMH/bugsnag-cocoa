@@ -1,5 +1,7 @@
-PATH
-  remote: ../maze-runner
+GIT
+  remote: https://github.com/bugsnag/maze-runner
+  revision: f640872586c89acd0cf13158c2fff8ee9c043b1e
+  branch: master
   specs:
     bugsnag-maze-runner (6.6.2)
       appium_lib (~> 11.2.0)
