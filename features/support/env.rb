@@ -7,6 +7,8 @@ BeforeAll do
   # Setup a 3 minute timeout for receiving requests is STRESS_TEST env var is set
   Maze.config.receive_requests_wait = 180 unless ENV['STRESS_TEST'].nil?
 
+  Maze.config.enable_retries = false
+
   # Additional require MacOS configuration
   if Maze.config.os == 'macos'
     # The default macOS Crash Reporter "#{app_name} quit unexpectedly" alert grabs focus which can cause tests to flake.
