@@ -1,0 +1,87 @@
+env:
+  LANG: "en_GB.UTF-8"
+
+steps:
+  - label: 'iOS 12 - Appium 1.22.1'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 180
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "--exclude=features/app_hangs.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=sl"
+          - "--device=iPad_mini_3_real_us"
+          - "--os=ios"
+          - "--os-version=12"
+          - "--appium-version=1.22.1"
+          - "--fail-fast"
+    concurrency: 2
+    concurrency_group: sauce-labs
+    concurrency_method: eager
+    retry:
+      automatic:
+        limit: 3
+
+  - label: 'iOS 12 - Appium 1.21.0'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 180
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "--exclude=features/app_hangs.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=sl"
+          - "--device=iPad_mini_3_real_us"
+          - "--os=ios"
+          - "--os-version=12"
+          - "--appium-version=1.21.0"
+          - "--fail-fast"
+    concurrency: 2
+    concurrency_group: sauce-labs
+    concurrency_method: eager
+    retry:
+      automatic:
+        limit: 3
+
+  - label: 'iOS 12 - Appium 1.17.0'
+    depends_on:
+      - cocoa_fixture
+    timeout_in_minutes: 180
+    agents:
+      queue: opensource
+    plugins:
+      artifacts#v1.3.0:
+        download: "features/fixtures/ios/output/iOSTestApp.ipa"
+        upload: "maze_output/failed/**/*"
+      docker-compose#v3.3.0:
+        run: cocoa-maze-runner
+        command:
+          - "--exclude=features/app_hangs.feature"
+          - "--app=features/fixtures/ios/output/iOSTestApp.ipa"
+          - "--farm=sl"
+          - "--device=iPad_mini_3_real_us"
+          - "--os=ios"
+          - "--os-version=12"
+          - "--appium-version=1.17.0"
+          - "--fail-fast"
+    concurrency: 2
+    concurrency_group: sauce-labs
+    concurrency_method: eager
+    retry:
+      automatic:
+        limit: 3
