@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/bugsnag/maze-runner
-  revision: fe12189f83aad154f54221ee0fcd41b483d3c0d1
-  tag: v6.8.0
+  revision: f61e86938f102e6807d56f1cb4f82c48d6acfc3b
+  branch: tms/sending-keys
   specs:
     bugsnag-maze-runner (6.8.0)
       appium_lib (~> 11.2.0)
@@ -137,7 +137,7 @@ GEM
       no_proxy_fix
       octokit (~> 4.7)
       terminal-table (>= 1, < 4)
-    diff-lcs (1.4.4)
+    diff-lcs (1.5.0)
     escape (0.0.4)
     ethon (0.15.0)
       ffi (>= 1.15.0)
