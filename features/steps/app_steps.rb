@@ -63,7 +63,7 @@ When('I set the app to {string} scenario') do |scenario|
   when 'macos'
     mac_set_value('scenarioName', scenario)
   else
-    steps %(When I send the keys "#{scenario}" to the element "scenario_name")
+    steps %(When I set the value of element "scenario_name" to "#{scenario}")
   end
 end
 
@@ -72,7 +72,7 @@ When('I set the app to {string} mode') do |mode|
   when 'macos'
     mac_set_value('scenarioMetadata', mode)
   else
-    steps %(When I send the keys "#{mode}" to the element "scenario_metadata")
+    steps %(When I set the value of element "scenario_metadata" to "#{mode}")
   end
 end
 
