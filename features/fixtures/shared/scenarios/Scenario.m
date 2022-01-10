@@ -157,7 +157,6 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
 + (void)executeMazeRunnerCommand {
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
     
-    // TODO: Change this to port 9339 once Maze Runner implements /command
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bs-local.com:9339/commands"]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (![response isKindOfClass:[NSHTTPURLResponse class]] || [(NSHTTPURLResponse *)response statusCode] != 200) {
@@ -178,7 +177,13 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
             eventMode = nil;
         }
         
+#if TARGET_OS_OSX
+        // Delay to allow accessibility APIs to finish handling the mouse click and returns control to the test
+        // framework to work around "unknown server-side error occurred while processing the command"
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+#else
         dispatch_async(dispatch_get_main_queue(), ^{
+#endif
             if ([action isEqualToString:@"run_scenario"]) {
                 [self runScenario:scenarioName eventMode:eventMode];
             } else if ([action isEqualToString:@"start_bugsnag"]) {
