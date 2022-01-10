@@ -92,6 +92,10 @@ static void BSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2) NS_NO_TAIL_CALL
     self.sessionEndpoint = @"https://sessions.bugsnag.com";
 }
 
+- (IBAction)executeMazeRunnerCommand:(id)sender {
+    [Scenario executeMazeRunnerCommand];
+}
+
 @end
 
 

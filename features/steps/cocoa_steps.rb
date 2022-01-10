@@ -1,17 +1,16 @@
-def short_scenario_name(scenario)
-  # A "Scenario" suffix is removed by the test harness and re-added uniformly by
-  # the test fixture. This reduces the time that Appium spends entering text.
-  unless scenario.end_with? 'Scenario'
-    raise 'All scenario names must end with "Scenario".'
-  end
-  scenario.delete_suffix 'Scenario'
+def execute_command(action, scenario_name)
+  # TODO: Instruct Maze Runner to serve up /command
+  # e.g. Maze::Server.command_response = {
+  File.write '/tmp/maze-runner/command', JSON.generate({
+    :scenario_name => scenario_name,
+    :scenario_mode => $scenario_mode,
+    :action => action})
+  Maze.driver.click_element :execute_command
+  $scenario_mode = nil
 end
 
 When('I run {string}') do |event_type|
-  steps %(
-    When I set the app to "#{short_scenario_name event_type}" scenario
-    And I click the element "run_scenario"
-  )
+  execute_command :run_scenario, event_type
 end
 
 When("I run {string} and relaunch the crashed app") do |event_type|
@@ -58,10 +57,7 @@ rescue Selenium::WebDriver::Error::NoSuchElementError
 end
 
 When('I configure Bugsnag for {string}') do |event_type|
-  steps %(
-    When I set the app to "#{short_scenario_name event_type}" scenario
-    And I click the element "start_bugsnag"
-  )
+  execute_command :start_bugsnag, event_type
 end
 
 When('I clear the error queue') do

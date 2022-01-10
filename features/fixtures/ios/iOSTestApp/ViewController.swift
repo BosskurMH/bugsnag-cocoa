@@ -70,6 +70,9 @@ class ViewController: UIViewController {
         return scenario
     }
 
+    @IBAction func executeCommand(_ sender: Any) {
+        Scenario.executeMazeRunnerCommand()
+    }
 
     @objc func didEnterBackgroundNotification() {
         scenario?.didEnterBackgroundNotification()

@@ -24,11 +24,6 @@ void markErrorHandledCallback(const BSG_KSCrashReportWriter *writer);
 - (instancetype)initWithConfig:(BugsnagConfiguration *)config;
 
 /**
- * Blocks the calling thread until network connectivity to the notify endpoint has been verified.
- */
-- (void)waitForNetworkConnectivity;
-
-/**
  * Executes the test case
  */
 - (void)run;
@@ -42,6 +37,8 @@ void markErrorHandledCallback(const BSG_KSCrashReportWriter *writer);
 - (void)performBlockAndWaitForEventDelivery:(dispatch_block_t)block NS_SWIFT_NAME(performBlockAndWaitForEventDelivery(_:));
 
 + (void)clearPersistentData;
+
++ (void)executeMazeRunnerCommand;
 
 @end
 
