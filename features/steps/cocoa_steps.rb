@@ -9,8 +9,12 @@ def execute_command(action, scenario_name)
   $scenario_mode = nil
 end
 
-When('I run {string}') do |event_type|
-  execute_command :run_scenario, event_type
+When('I run {string}') do |scenario_name|
+  command = Maze::Commands::RunScenarioCommand.new
+  command.scenario_name = scenario_name
+  Maze::Server.commands.add command
+
+  step('I click the element "execute_command"')
 end
 
 When("I run {string} and relaunch the crashed app") do |event_type|
@@ -56,8 +60,12 @@ rescue Selenium::WebDriver::Error::NoSuchElementError
   false
 end
 
-When('I configure Bugsnag for {string}') do |event_type|
-  execute_command :start_bugsnag, event_type
+When('I configure Bugsnag for {string}') do |scenario_name|
+  command = Maze::Commands::StartBugsnagCommand.new
+  command.scenario_name = scenario_name
+  Maze::Server.commands.add command
+
+  step('I click the element "execute_command"')
 end
 
 When('I clear the error queue') do

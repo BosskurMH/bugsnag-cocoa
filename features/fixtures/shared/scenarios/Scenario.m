@@ -178,7 +178,7 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
                                                      delegateQueue:[NSOperationQueue mainQueue]];
     
     // TODO: Change this to port 9339 once Maze Runner implements /command
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bs-local.com:9009/command"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bs-local.com:9339/commands"]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (![response isKindOfClass:[NSHTTPURLResponse class]] || [(NSHTTPURLResponse *)response statusCode] != 200) {
             NSLog(@"%s request failed with %@", __PRETTY_FUNCTION__, response ?: error);
