@@ -155,10 +155,7 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
 }
 
 + (void)executeMazeRunnerCommand {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:
-                             [NSURLSessionConfiguration ephemeralSessionConfiguration]
-                                                          delegate:nil
-                                                     delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
     
     // TODO: Change this to port 9339 once Maze Runner implements /command
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bs-local.com:9339/commands"]];
@@ -181,11 +178,13 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
             eventMode = nil;
         }
         
-        if ([action isEqualToString:@"run_scenario"]) {
-            [self runScenario:scenarioName eventMode:eventMode];
-        } else if ([action isEqualToString:@"start_bugsnag"]) {
-            [self startBugsnagForScenario:scenarioName eventMode:eventMode];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([action isEqualToString:@"run_scenario"]) {
+                [self runScenario:scenarioName eventMode:eventMode];
+            } else if ([action isEqualToString:@"start_bugsnag"]) {
+                [self startBugsnagForScenario:scenarioName eventMode:eventMode];
+            }
+        });
     }] resume];
 }
 
