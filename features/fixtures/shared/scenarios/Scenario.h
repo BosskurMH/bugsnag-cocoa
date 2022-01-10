@@ -19,9 +19,11 @@ void markErrorHandledCallback(const BSG_KSCrashReportWriter *writer);
 
 @property (strong, nonatomic, nonnull) BugsnagConfiguration *config;
 
-+ (Scenario *)createScenarioNamed:(NSString *)className withConfig:(BugsnagConfiguration *)config;
++ (Scenario *)createScenarioNamed:(NSString *)className withConfig:(nullable BugsnagConfiguration *)config;
 
-- (instancetype)initWithConfig:(BugsnagConfiguration *)config;
+@property (class, readonly, nullable) Scenario *currentScenario;
+
+- (instancetype)initWithConfig:(nullable BugsnagConfiguration *)config;
 
 /**
  * Executes the test case

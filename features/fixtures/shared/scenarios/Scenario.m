@@ -2,9 +2,9 @@
 // Created by Jamie Lynch on 23/03/2018.
 // Copyright (c) 2018 Bugsnag. All rights reserved.
 //
-#import <objc/runtime.h>
-
 #import "Scenario.h"
+
+#import <objc/runtime.h>
 
 extern void bsg_kscrash_setPrintTraceToStdout(bool printTraceToStdout);
 
@@ -30,49 +30,32 @@ static char ksLogPath[PATH_MAX];
     dispatch_block_t _onEventDelivery;
 }
 
-+ (Scenario *)createScenarioNamed:(NSString *)className
-                       withConfig:(BugsnagConfiguration *)config {
-
-    Class clz = NSClassFromString(className);
-
-#if TARGET_OS_IPHONE
-    NSString *swiftPrefix = @"iOSTestApp.";
-#elif TARGET_OS_OSX
-    NSString *swiftPrefix = @"macOSTestApp.";
-#endif
-
-    if (!clz) { // Case-insensitive class lookup because AppiumForMac is a bit unreliable at entering uppercase characters.
-        unsigned int classCount = 0;
-        Class *classes = objc_copyClassList(&classCount);
-        for (unsigned int i = 0; i < classCount; i++) {
-            NSString *name = NSStringFromClass(classes[i]);
-            if ([name hasPrefix:swiftPrefix]) {
-                name = [name substringFromIndex:swiftPrefix.length];
-            }
-            if ([name caseInsensitiveCompare:className] == NSOrderedSame) {
-                clz = classes[i];
-                break;
-            }
-        }
-        free(classes);
-    }
++ (Scenario *)createScenarioNamed:(NSString *)className withConfig:(BugsnagConfiguration *)config {
+    Class clz = NSClassFromString(className) ?:
+    NSClassFromString([@"iOSTestApp." stringByAppendingString:className]) ?:
+    NSClassFromString([@"macOSTestApp." stringByAppendingString:className]);
 
     if (!clz) {
         [NSException raise:NSInvalidArgumentException format:@"Failed to find scenario class named %@", className];
     }
 
-    id obj = [clz alloc];
+    return (theScenario = [(Scenario *)[clz alloc] initWithConfig:config]);
+}
 
-    NSAssert([obj isKindOfClass:[Scenario class]], @"Class '%@' is not a subclass of Scenario", className);
-
-    theScenario = obj;
-
-    return [(Scenario *)obj initWithConfig:config];
++ (Scenario *)currentScenario {
+    return theScenario;
 }
 
 - (instancetype)initWithConfig:(BugsnagConfiguration *)config {
     if (self = [super init]) {
-        self.config = config;
+        if (config) {
+            _config = config;
+        } else {
+            _config = [[BugsnagConfiguration alloc] initWithApiKey:@"12312312312312312312312312312312"];
+            _config.endpoints.notify = @"http://bs-local.com:9339/notify";
+            _config.endpoints.sessions = @"http://bs-local.com:9339/sessions";
+        }
+        _config.enabledErrorTypes.ooms = NO;
     }
     return self;
 }
@@ -218,12 +201,7 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
 + (void)startBugsnagForScenario:(NSString *)scenarioName eventMode:(NSString *)eventMode {
     NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, scenarioName, eventMode);
     
-    BugsnagConfiguration *configuration = [[BugsnagConfiguration alloc] initWithApiKey:@"12312312312312312312312312312312"];
-    configuration.endpoints.notify = @"http://bs-local.com:9339/notify";
-    configuration.endpoints.sessions = @"http://bs-local.com:9339/sessions";
-    configuration.enabledErrorTypes.ooms = NO;
-    
-    theScenario = [Scenario createScenarioNamed:scenarioName withConfig:configuration];
+    theScenario = [Scenario createScenarioNamed:scenarioName withConfig:nil];
     theScenario.eventMode = eventMode;
     
     NSLog(@"Starting scenario \"%@\"", NSStringFromClass([theScenario class]));
