@@ -1,7 +1,5 @@
 def execute_command(action, scenario_name)
-  # TODO: Instruct Maze Runner to serve up /command
-  # e.g. Maze::Server.command_response = {
-  File.write '/tmp/maze-runner/command', JSON.generate({
+  Maze::Server.commands.add({
     :scenario_name => scenario_name,
     :scenario_mode => $scenario_mode,
     :action => action})
@@ -10,11 +8,7 @@ def execute_command(action, scenario_name)
 end
 
 When('I run {string}') do |scenario_name|
-  command = Maze::Commands::RunScenarioCommand.new
-  command.scenario_name = scenario_name
-  Maze::Server.commands.add command
-
-  step('I click the element "execute_command"')
+  execute_command :run_scenario, scenario_name
 end
 
 When("I run {string} and relaunch the crashed app") do |event_type|
@@ -61,11 +55,7 @@ rescue Selenium::WebDriver::Error::NoSuchElementError
 end
 
 When('I configure Bugsnag for {string}') do |scenario_name|
-  command = Maze::Commands::StartBugsnagCommand.new
-  command.scenario_name = scenario_name
-  Maze::Server.commands.add command
-
-  step('I click the element "execute_command"')
+  execute_command :start_bugsnag, scenario_name
 end
 
 When('I clear the error queue') do
