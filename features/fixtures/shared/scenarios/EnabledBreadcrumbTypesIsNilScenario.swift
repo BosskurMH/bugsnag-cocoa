@@ -10,14 +10,14 @@ import Foundation
 
 class EnabledBreadcrumbTypesIsNilScenario : Scenario {
     override func startBugsnag() {
-        self.config.autoTrackSessions = false;
-        self.config.enabledBreadcrumbTypes = []; // aka .none
+        config.autoTrackSessions = false;
+        config.enabledBreadcrumbTypes = [];
         super.startBugsnag()
     }
  
     override func run() {
-        Bugsnag.leaveBreadcrumb("Noisy event", metadata: nil, type: .log)
-        Bugsnag.leaveBreadcrumb("Important event", metadata: nil, type: .process)
+        Bugsnag.leaveBreadcrumb("Should not see this navigation", metadata: nil, type: .navigation)
+        Bugsnag.leaveBreadcrumb("Should not see this request", metadata: nil, type: .request)
 
         Bugsnag.notifyError(MagicError(domain: "com.example",
                                        code: 43,
