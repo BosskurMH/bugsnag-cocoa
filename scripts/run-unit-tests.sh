@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo ls
+
 set -o nounset
 
 xcresult=$(date '+BugsnagTests-%Y-%m-%d-%H-%M-%S.xcresult')
