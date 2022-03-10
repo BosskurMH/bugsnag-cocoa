@@ -1,9 +1,7 @@
 //
-//  BugsnagMetadata.h
+//  BugsnagMacros.h
 //
-//  Created by Conrad Irwin on 2014-10-01.
-//
-//  Copyright (c) 2014 Bugsnag, Inc. All rights reserved.
+//  Copyright (c) 2022 Bugsnag, Inc. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,27 +22,14 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+/**
+ * Annotates methods and properties that will be removed in the next major release of Bugsnag.
+ */
+#define BSG_DEPRECATED_WITH_REPLACEMENT(REPLACEMENT) __attribute__((deprecated("", REPLACEMENT)))
 
-#import <Bugsnag/BugsnagMacros.h>
-#import <Bugsnag/BugsnagMetadataStore.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-/// :nodoc:
-/// Not for public use.
-/// This header file will be removed in the next major release.
-BSG_INTERNAL
-@interface BugsnagMetadata : NSObject <BugsnagMetadataStore>
-
-- (instancetype)initWithDictionary:(NSDictionary *)dict BSG_INTERNAL;
-
-/// Configures the metadata object to serialize itself to the provided buffer and file immediately, and upon each change.
-- (void)setStorageBuffer:(char *_Nullable *_Nullable)buffer file:(nullable NSString *)file BSG_INTERNAL;
-
-/// Exposed to facilitate unit testing.
-- (void)writeData:(NSData *)data toBuffer:(char *_Nullable *_Nonnull)buffer BSG_INTERNAL;
-
-@end
-
-NS_ASSUME_NONNULL_END
+/**
+ * Annotates methods and properties not indended for public use.
+ */
+#ifndef BSG_INTERNAL
+#define BSG_INTERNAL __attribute__((deprecated("This is an internal API and will be removed in the next major release.")))
+#endif

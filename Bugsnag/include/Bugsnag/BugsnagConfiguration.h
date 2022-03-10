@@ -30,14 +30,9 @@
 #import <Bugsnag/BugsnagBreadcrumb.h>
 #import <Bugsnag/BugsnagEvent.h>
 #import <Bugsnag/BugsnagFeatureFlagStore.h>
-#import <Bugsnag/BugsnagMetadata.h>
+#import <Bugsnag/BugsnagMacros.h>
 #import <Bugsnag/BugsnagMetadataStore.h>
 #import <Bugsnag/BugsnagPlugin.h>
-
-/**
- * Annotates methods and properties that will be removed in the next major release of Bugsnag.
- */
-#define BSG_DEPRECATED_WITH_REPLACEMENT(REPLACEMENT) __attribute__((deprecated("", REPLACEMENT)))
 
 @class BugsnagUser;
 @class BugsnagEndpointConfiguration;

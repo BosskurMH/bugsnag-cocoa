@@ -37,6 +37,7 @@
 #import <Bugsnag/BugsnagEvent.h>
 #import <Bugsnag/BugsnagFeatureFlag.h>
 #import <Bugsnag/BugsnagLastRunInfo.h>
+#import <Bugsnag/BugsnagMacros.h>
 #import <Bugsnag/BugsnagMetadata.h>
 #import <Bugsnag/BugsnagPlugin.h>
 #import <Bugsnag/BugsnagSession.h>

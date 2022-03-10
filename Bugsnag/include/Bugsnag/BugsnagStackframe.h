@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import <Bugsnag/BugsnagMacros.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString * BugsnagStackframeType NS_TYPED_ENUM;
@@ -74,7 +76,7 @@ FOUNDATION_EXPORT BugsnagStackframeType const BugsnagStackframeTypeCocoa;
  *
  * The call stack strings should follow the format used by `[NSThread callStackSymbols]` and `backtrace_symbols()`.
  */
-+ (nullable NSArray<BugsnagStackframe *> *)stackframesWithCallStackSymbols:(NSArray<NSString *> *)callStackSymbols;
++ (nullable NSArray<BugsnagStackframe *> *)stackframesWithCallStackSymbols:(NSArray<NSString *> *)callStackSymbols BSG_INTERNAL;
 
 @end
 

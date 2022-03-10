@@ -718,6 +718,9 @@
 		01E8765E256684E700F4B70A /* URLSessionMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E8765D256684E700F4B70A /* URLSessionMock.m */; };
 		01E8765F256684E700F4B70A /* URLSessionMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E8765D256684E700F4B70A /* URLSessionMock.m */; };
 		01E87660256684E700F4B70A /* URLSessionMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E8765D256684E700F4B70A /* URLSessionMock.m */; };
+		01FB65AC27D9102800FE594E /* BugsnagMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 01FB65AB27D9102800FE594E /* BugsnagMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01FB65AD27D9102800FE594E /* BugsnagMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 01FB65AB27D9102800FE594E /* BugsnagMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01FB65AE27D9102800FE594E /* BugsnagMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 01FB65AB27D9102800FE594E /* BugsnagMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A700A9424A63ABC0068CD1B /* BugsnagThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A700A8024A63A8E0068CD1B /* BugsnagThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A700A9524A63AC50068CD1B /* BugsnagSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A700A8124A63A8E0068CD1B /* BugsnagSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A700A9624A63AC60068CD1B /* BugsnagStackframe.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A700A8224A63A8E0068CD1B /* BugsnagStackframe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1377,6 +1380,7 @@
 		01DE903B26CEAF9E00455213 /* BSGUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGUtilsTests.m; sourceTree = "<group>"; };
 		01E8765C256684E700F4B70A /* URLSessionMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLSessionMock.h; sourceTree = "<group>"; };
 		01E8765D256684E700F4B70A /* URLSessionMock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLSessionMock.m; sourceTree = "<group>"; };
+		01FB65AB27D9102800FE594E /* BugsnagMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsnagMacros.h; sourceTree = "<group>"; };
 		3A700A8024A63A8E0068CD1B /* BugsnagThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BugsnagThread.h; sourceTree = "<group>"; };
 		3A700A8124A63A8E0068CD1B /* BugsnagSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BugsnagSession.h; sourceTree = "<group>"; };
 		3A700A8224A63A8E0068CD1B /* BugsnagStackframe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BugsnagStackframe.h; sourceTree = "<group>"; };
@@ -2016,6 +2020,7 @@
 				01099391273D123800128BBE /* BugsnagFeatureFlag.h */,
 				010993B0273D2F6100128BBE /* BugsnagFeatureFlagStore.h */,
 				01CCAEE825D414D60057268D /* BugsnagLastRunInfo.h */,
+				01FB65AB27D9102800FE594E /* BugsnagMacros.h */,
 				3A700A9324A63A8E0068CD1B /* BugsnagMetadata.h */,
 				3A700A8324A63A8E0068CD1B /* BugsnagMetadataStore.h */,
 				3A700A8E24A63A8E0068CD1B /* BugsnagPlugin.h */,
@@ -2097,6 +2102,7 @@
 				0089697E2486DAD100DC48C2 /* BSG_KSArchSpecific.h in Headers */,
 				008969BA2486DAD100DC48C2 /* BSG_KSJSONCodec.h in Headers */,
 				008969E72486DAD100DC48C2 /* BSG_KSSystemInfoC.h in Headers */,
+				01FB65AC27D9102800FE594E /* BugsnagMacros.h in Headers */,
 				CBAA6ABB250BA70E00713376 /* BugsnagKVStore.h in Headers */,
 				00AD1F102486A17900A27979 /* BugsnagSessionTracker.h in Headers */,
 				0126F79B25DD510E008483C2 /* BSGEventUploadObjectOperation.h in Headers */,
@@ -2201,6 +2207,7 @@
 				0089697F2486DAD100DC48C2 /* BSG_KSArchSpecific.h in Headers */,
 				008969BB2486DAD100DC48C2 /* BSG_KSJSONCodec.h in Headers */,
 				008969E82486DAD100DC48C2 /* BSG_KSSystemInfoC.h in Headers */,
+				01FB65AD27D9102800FE594E /* BugsnagMacros.h in Headers */,
 				CBAA6ABC250BA70E00713376 /* BugsnagKVStore.h in Headers */,
 				00AD1F112486A17900A27979 /* BugsnagSessionTracker.h in Headers */,
 				008968F52486DAB800DC48C2 /* BugsnagSessionFileStore.h in Headers */,
@@ -2305,6 +2312,7 @@
 				008969802486DAD100DC48C2 /* BSG_KSArchSpecific.h in Headers */,
 				008969BC2486DAD100DC48C2 /* BSG_KSJSONCodec.h in Headers */,
 				008969E92486DAD100DC48C2 /* BSG_KSSystemInfoC.h in Headers */,
+				01FB65AE27D9102800FE594E /* BugsnagMacros.h in Headers */,
 				CBAA6ABD250BA70F00713376 /* BugsnagKVStore.h in Headers */,
 				00AD1F122486A17900A27979 /* BugsnagSessionTracker.h in Headers */,
 				008968F62486DAB800DC48C2 /* BugsnagSessionFileStore.h in Headers */,
@@ -3455,6 +3463,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 372ZUL2ZB7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BSG_INTERNAL=",
+				);
 				INFOPLIST_FILE = Tests/BugsnagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3475,6 +3487,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 372ZUL2ZB7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BSG_INTERNAL=",
+				);
 				INFOPLIST_FILE = Tests/BugsnagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3541,6 +3557,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BSG_INTERNAL=",
+				);
 				INFOPLIST_FILE = Tests/BugsnagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3560,6 +3580,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BSG_INTERNAL=",
+				);
 				INFOPLIST_FILE = Tests/BugsnagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3622,6 +3646,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BSG_INTERNAL=",
+				);
 				INFOPLIST_FILE = Tests/BugsnagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3641,6 +3669,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"BSG_INTERNAL=",
+				);
 				INFOPLIST_FILE = Tests/BugsnagTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

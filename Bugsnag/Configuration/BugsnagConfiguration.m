@@ -24,6 +24,8 @@
 // THE SOFTWARE.
 //
 
+#define BSG_INTERNAL
+
 #import "BugsnagConfiguration+Private.h"
 
 #import "BSGConfigurationBuilder.h"

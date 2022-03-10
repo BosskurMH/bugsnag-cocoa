@@ -24,6 +24,8 @@
 // THE SOFTWARE.
 //
 
+#define BSG_INTERNAL
+
 #import "BugsnagClient+Private.h"
 
 #import "BSGAppHangDetector.h"

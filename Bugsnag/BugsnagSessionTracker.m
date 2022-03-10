@@ -6,6 +6,8 @@
 //  Copyright © 2017 Bugsnag. All rights reserved.
 //
 
+#define BSG_INTERNAL
+
 #import "BugsnagSessionTracker.h"
 
 #import "BSGSessionUploader.h"

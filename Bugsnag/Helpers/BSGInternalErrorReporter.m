@@ -6,6 +6,8 @@
 //  Copyright © 2021 Bugsnag Inc. All rights reserved.
 //
 
+#define BSG_INTERNAL
+
 #import "BSGInternalErrorReporter.h"
 
 #import "BSGKeys.h"

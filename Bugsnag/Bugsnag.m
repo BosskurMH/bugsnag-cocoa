@@ -24,6 +24,8 @@
 // THE SOFTWARE.
 //
 
+#define BSG_INTERNAL
+
 #import "Bugsnag.h"
 
 #import "BSGKeys.h"

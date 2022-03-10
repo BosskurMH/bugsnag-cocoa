@@ -24,6 +24,8 @@
 // THE SOFTWARE.
 //
 
+#define BSG_INTERNAL
+
 #import "BugsnagMetadata+Private.h"
 
 #import "BSGJSONSerialization.h"

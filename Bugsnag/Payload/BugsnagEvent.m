@@ -6,6 +6,8 @@
 //
 //
 
+#define BSG_INTERNAL
+
 #import "BugsnagEvent+Private.h"
 
 #import "BSGFeatureFlagStore.h"
