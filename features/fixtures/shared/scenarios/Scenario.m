@@ -180,6 +180,21 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
     bsg_kslog_setLogFilename(ksLogPath, true);
 }
 
++ (void)hitGoogle {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (![response isKindOfClass:[NSHTTPURLResponse class]] || [(NSHTTPURLResponse *)response statusCode] != 200) {
+            NSLog(@"%s SKW google request failed with %@", __PRETTY_FUNCTION__, response ?: error);
+            return;
+        } else {
+            NSLog(@"SKW Google request succeeded!");
+        }
+    }] resume];
+}
+
 + (void)executeMazeRunnerCommand:(void (^)(NSString *action, NSString *scenarioName, NSString *scenarioMode))preHandler {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
@@ -188,6 +203,7 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (![response isKindOfClass:[NSHTTPURLResponse class]] || [(NSHTTPURLResponse *)response statusCode] != 200) {
             NSLog(@"%s request failed with %@", __PRETTY_FUNCTION__, response ?: error);
+            [self hitGoogle];
             return;
         }
         NSLog(@"%s response body:  %@", __PRETTY_FUNCTION__, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
@@ -240,5 +256,6 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
     NSLog(@"Starting scenario \"%@\"", NSStringFromClass([theScenario class]));
     [theScenario startBugsnag];
 }
+
 
 @end
