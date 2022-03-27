@@ -186,24 +186,36 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+        NSLog(@"SKW 1");
         if (![response isKindOfClass:[NSHTTPURLResponse class]] || [(NSHTTPURLResponse *)response statusCode] != 200) {
+        NSLog(@"SKW 2");
             NSLog(@"%s SKW google request failed with %@", __PRETTY_FUNCTION__, response ?: error);
+        NSLog(@"SKW 3");
             return;
         } else {
+        NSLog(@"SKW 4");
             NSLog(@"SKW Google request succeeded!");
         }
+        NSLog(@"SKW 5");
+
     }] resume];
+        NSLog(@"SKW 6");
+
 }
 
 + (void)executeMazeRunnerCommand:(void (^)(NSString *action, NSString *scenarioName, NSString *scenarioMode))preHandler {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+
+    [self hitGoogle];
+
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bs-local.com:9339/command"]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (![response isKindOfClass:[NSHTTPURLResponse class]] || [(NSHTTPURLResponse *)response statusCode] != 200) {
             NSLog(@"%s request failed with %@", __PRETTY_FUNCTION__, response ?: error);
             [self hitGoogle];
+            [NSThread sleepForTimeInterval:5.0f];
             return;
         }
         NSLog(@"%s response body:  %@", __PRETTY_FUNCTION__, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
