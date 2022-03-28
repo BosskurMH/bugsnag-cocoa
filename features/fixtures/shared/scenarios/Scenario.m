@@ -207,8 +207,6 @@ static NSURLSessionUploadTask * uploadTaskWithRequest_fromData_completionHandler
 + (void)executeMazeRunnerCommand:(void (^)(NSString *action, NSString *scenarioName, NSString *scenarioMode))preHandler {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 
-    [self hitGoogle];
-
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bs-local.com:9339/command"]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

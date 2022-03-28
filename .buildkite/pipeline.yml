@@ -29,9 +29,9 @@ steps:
     commands:
       - ./features/scripts/build_and_upload_app.rb
 
+  - wait: ~
+
   - label: 'iOS 10 E2E tests batch 1'
-    depends_on:
-      - cocoa_fixture
     timeout_in_minutes: 120
     agents:
       queue: opensource
@@ -61,8 +61,6 @@ steps:
       - exit_status: "*"
 
   - label: 'iOS 10 E2E tests batch 2'
-    depends_on:
-      - cocoa_fixture
     timeout_in_minutes: 120
     agents:
       queue: opensource
@@ -90,9 +88,10 @@ steps:
     soft_fail:
       - exit_status: "*"
 
+  - wait:
+    continue_on_failure: true
+
   - label: 'iOS 11 E2E tests batch 1'
-    depends_on:
-      - cocoa_fixture
     # More time than other steps as the BrowserStack iOS 11 devices seem particularly unstable and
     # sessions need resetting frequently, taking a minute or more each time.
     timeout_in_minutes: 120
@@ -123,8 +122,6 @@ steps:
       - exit_status: "*"
 
   - label: 'iOS 11 E2E tests batch 2'
-    depends_on:
-      - cocoa_fixture
     # More time than other steps as the BrowserStack iOS 11 devices seem particularly unstable and
     # sessions need resetting frequently, taking a minute or more each time.
     timeout_in_minutes: 120
@@ -154,11 +151,10 @@ steps:
     soft_fail:
       - exit_status: "*"
 
-  - wait
+  - wait:
+    continue_on_failure: true
 
   - label: 'iOS 10 E2E tests batch 1'
-    depends_on:
-      - cocoa_fixture
     timeout_in_minutes: 120
     agents:
       queue: opensource
@@ -188,8 +184,6 @@ steps:
       - exit_status: "*"
 
   - label: 'iOS 10 E2E tests batch 2'
-    depends_on:
-      - cocoa_fixture
     timeout_in_minutes: 120
     agents:
       queue: opensource
@@ -217,9 +211,10 @@ steps:
     soft_fail:
       - exit_status: "*"
 
+  - wait:
+    continue_on_failure: true
+
   - label: 'iOS 11 E2E tests batch 1'
-    depends_on:
-      - cocoa_fixture
     # More time than other steps as the BrowserStack iOS 11 devices seem particularly unstable and
     # sessions need resetting frequently, taking a minute or more each time.
     timeout_in_minutes: 120
@@ -250,8 +245,6 @@ steps:
       - exit_status: "*"
 
   - label: 'iOS 11 E2E tests batch 2'
-    depends_on:
-      - cocoa_fixture
     # More time than other steps as the BrowserStack iOS 11 devices seem particularly unstable and
     # sessions need resetting frequently, taking a minute or more each time.
     timeout_in_minutes: 120
@@ -281,11 +274,10 @@ steps:
     soft_fail:
       - exit_status: "*"
 
-  - wait
+  - wait:
+    continue_on_failure: true
 
   - label: 'iOS 10 E2E tests batch 1'
-    depends_on:
-      - cocoa_fixture
     timeout_in_minutes: 120
     agents:
       queue: opensource
@@ -315,8 +307,6 @@ steps:
       - exit_status: "*"
 
   - label: 'iOS 10 E2E tests batch 2'
-    depends_on:
-      - cocoa_fixture
     timeout_in_minutes: 120
     agents:
       queue: opensource
@@ -344,9 +334,10 @@ steps:
     soft_fail:
       - exit_status: "*"
 
+  - wait:
+    continue_on_failure: true
+
   - label: 'iOS 11 E2E tests batch 1'
-    depends_on:
-      - cocoa_fixture
     # More time than other steps as the BrowserStack iOS 11 devices seem particularly unstable and
     # sessions need resetting frequently, taking a minute or more each time.
     timeout_in_minutes: 120
@@ -377,8 +368,6 @@ steps:
       - exit_status: "*"
 
   - label: 'iOS 11 E2E tests batch 2'
-    depends_on:
-      - cocoa_fixture
     # More time than other steps as the BrowserStack iOS 11 devices seem particularly unstable and
     # sessions need resetting frequently, taking a minute or more each time.
     timeout_in_minutes: 120
